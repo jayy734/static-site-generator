@@ -1,1 +1,1 @@
-# static-site-generator
+info about this project
