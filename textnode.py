@@ -12,9 +12,5 @@ class TextNode:
         )
         
     def __repr__(self):
-        return f"TextNode('{self.text}', '{self.text_type}', '{self.url}')"
-
-node1 = TextNode("Hello, world!", "bold", "https://example.com")
-node2 = TextNode("Hello, world!", "bold", "https://example.com")
-print(node1 == node2)  # True
-print(repr(node1)) 
+        return f"TextNode({self.text}, {self.text_type}, {self.url})"
+ 
