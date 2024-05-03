@@ -8,5 +8,15 @@ class TestTextNode(unittest.TestCase):
         node2 = TextNode("This is a text node", "bold")
         self.assertEqual(node, node2)
 
+    def test_eq_url(self):
+        node = TextNode("This is a text node" , "bold", "")
+        node2 = TextNode("This is a text node", "bold")
+        self.assertEqual(node,node2)
+    
+    def test_text_type(self):
+        node = TextNode("This is a text node" , "bold")
+        node2 = TextNode("This is not a text node", "bold")
+        self.assertEqual(node, node2)
+
 if __name__ == "__main__":
     unittest.main()
