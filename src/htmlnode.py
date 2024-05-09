@@ -9,6 +9,8 @@ class HTMLNode:
         raise NotImplementedError("This should be implemented")
     
     def props_to_html(self):
+        if self.props is None:
+            return ""
         output = ""
         for key , value in self.props.items():
             output += " " + (f'{key}="{value}"') 
@@ -28,6 +30,9 @@ class LeafNode(HTMLNode):
             return f"{self.value}"
         return f"<{self.tag}{self.props_to_html()}>{self.value}</{self.tag}>"
     
+    def __repr__(self):
+        return f"LeafNode({self.tag}, {self.value}, {self.props})"
+    
 class ParentNode(HTMLNode):
     def __init__(self, tag=None, children = [], props=None):
         super().__init__(tag, None, children, props)
@@ -40,7 +45,10 @@ class ParentNode(HTMLNode):
         result = ""
         for child in self.children:
             result += child.to_html()
-        return f"<{self.tag}>{result}</{self.tag}>"
+        return f"<{self.tag}{self.props_to_html()}>{result}</{self.tag}>"
+    
+    def __repr__(self):
+        return f"ParentNode({self.tag}, children: {self.children}, {self.props})"
 
     
 node = LeafNode("p", "This is a paragraph of text.")
